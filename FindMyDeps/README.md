@@ -1,6 +1,6 @@
 # FindMyDeps
 
-Find my dependencies is a mini-DI tool for automatically checking and assigning MonoBehaviours on a single GameObject in editor time. One of the problems with using the GameObject hierarchy tree is that script dependencies can break very easily, for example:
+Find my dependencies is a mini-DI tool for automatically checking and assigning MonoBehaviours on a single GameObject's hierarchy tree in editor time. One of the problems with using the GameObject hierarchy tree is that script dependencies can break very easily, for example:
 
 * Public (or Serialized) fields are reset when a script is removed and created again on an object
 * Using GetComponent\<T\> within the objects hierarchy will break if the object is restructured
