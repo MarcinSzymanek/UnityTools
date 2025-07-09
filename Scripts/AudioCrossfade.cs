@@ -10,6 +10,7 @@ using System.Collections;
  *
  * Copying the audiosource could be avoided by making a second AS beforehand
  */
+ [RequireComponent(typeof(AudioSource))]
 public class AudioCrossfade : MonoBehaviour
 {
 	private AudioSource originalSource;
@@ -55,7 +56,7 @@ public class AudioCrossfade : MonoBehaviour
 
 	void Start()
 	{
-		secondSource = Utils.ComponentHelpers.CopyComponent<AudioSource>(originalSource, gameObject);
+		secondSource = gameObject.AddComponent<AudioSource>();
 		secondSource.pitch = originalSource.pitch;
 		secondSource.outputAudioMixerGroup = originalSource.outputAudioMixerGroup;
 		secondSource.spatialBlend = originalSource.spatialBlend;
