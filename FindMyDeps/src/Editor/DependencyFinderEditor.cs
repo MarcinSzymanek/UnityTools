@@ -21,7 +21,7 @@ namespace FMD
 {
 	public class Helpers
 	{
-		
+
 		[MenuItem("Assets/FMD/Find Dependencies Of Selected Prefabs")]
 		static void Test(MenuCommand menuCommand)
 		{
@@ -30,14 +30,15 @@ namespace FMD
 			{
 				string path = AssetDatabase.GetAssetPath(obj);
 				GameObject prefab = PrefabUtility.LoadPrefabContents(path);
-				if(prefab.TryGetComponent<DependencyFinder>(out DependencyFinder script))
+				DependencyFinder script = prefab.GetComponentInChildren<DependencyFinder>();
+				if(script != null)
 				{
 					script.AssignDependencies();
 					PrefabUtility.SaveAsPrefabAsset(prefab, path);
 				}
 			}
 		}
-		
+
 		[MenuItem("FMD/Add FMD")]
 		static void AddDependencyFinderToObjectMainMenu(MenuCommand menuCommand)
 		{
@@ -52,7 +53,7 @@ namespace FMD
 			fmd.transform.parent = context.root;
 			fmd.AddComponent<DependencyFinder>();
 		}
-		
+
 		[MenuItem("GameObject/FMD/Add FMD")]
 		static void AddDependencyFinderToObjectContextMenu(MenuCommand menuCommand)
 		{
